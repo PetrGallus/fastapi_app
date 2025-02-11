@@ -19,6 +19,8 @@ import { Route as LayoutImport } from './routes/_layout'
 import { Route as LayoutIndexImport } from './routes/_layout/index'
 import { Route as LayoutSettingsImport } from './routes/_layout/settings'
 import { Route as LayoutItemsImport } from './routes/_layout/items'
+import { Route as LayoutDnsRecordsImport } from './routes/_layout/dns-records'
+import { Route as LayoutDnsDashboardImport } from './routes/_layout/dns-dashboard'
 import { Route as LayoutAdminImport } from './routes/_layout/admin'
 
 // Create/Update Routes
@@ -63,6 +65,16 @@ const LayoutItemsRoute = LayoutItemsImport.update({
   getParentRoute: () => LayoutRoute,
 } as any)
 
+const LayoutDnsRecordsRoute = LayoutDnsRecordsImport.update({
+  path: '/dns-records',
+  getParentRoute: () => LayoutRoute,
+} as any)
+
+const LayoutDnsDashboardRoute = LayoutDnsDashboardImport.update({
+  path: '/dns-dashboard',
+  getParentRoute: () => LayoutRoute,
+} as any)
+
 const LayoutAdminRoute = LayoutAdminImport.update({
   path: '/admin',
   getParentRoute: () => LayoutRoute,
@@ -96,6 +108,14 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof LayoutAdminImport
       parentRoute: typeof LayoutImport
     }
+    '/_layout/dns-dashboard': {
+      preLoaderRoute: typeof LayoutDnsDashboardImport
+      parentRoute: typeof LayoutImport
+    }
+    '/_layout/dns-records': {
+      preLoaderRoute: typeof LayoutDnsRecordsImport
+      parentRoute: typeof LayoutImport
+    }
     '/_layout/items': {
       preLoaderRoute: typeof LayoutItemsImport
       parentRoute: typeof LayoutImport
@@ -116,6 +136,8 @@ declare module '@tanstack/react-router' {
 export const routeTree = rootRoute.addChildren([
   LayoutRoute.addChildren([
     LayoutAdminRoute,
+    LayoutDnsDashboardRoute,
+    LayoutDnsRecordsRoute,
     LayoutItemsRoute,
     LayoutSettingsRoute,
     LayoutIndexRoute,

@@ -17,7 +17,7 @@ function Dashboard() {
           <Text fontSize="2xl">
             Hi, {currentUser?.full_name || currentUser?.email} 👋🏼
           </Text>
-          <Text>Welcome back, nice to see you again!</Text>
+          <Text>Welcome back, nice to see you at LockedShields2025!</Text>
         </Box>
       </Container>
     </>
